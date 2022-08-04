@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# References
+1. https://www.geeksforgeeks.org/reactjs-router/ (Routing)
+2. https://www.youtube.com/watch?v=7LNl2JlZKHA&ab_channel=ArpanNeupane (Connecting Back-End + Front-End)
+3. https://getcssscan.com/css-buttons-examples (Button Sample)
+4. https://dev.to/nagatodev/how-to-add-login-authentication-to-a-flask-and-react-application-23i7 (Authentication)
+5. https://mui.com/x/api/data-grid/data-grid/#slots (Material UI Data Grid)
+6. https://codesandbox.io/s/66783261-not-able-to-display-no-rows-message-after-applying-filter-in-react-material-ui-uduhv?file=/demo.js (Material UI Data Grid)
+7. https://mui.com/material-ui/react-modal/#nested-modal (Material UI Modal)
+8. https://stackoverflow.com/questions/64331095/how-to-add-a-button-to-every-row-in-mui-datagrid (Buttons in Data Grid)
+9. https://stackoverflow.com/questions/41546883/what-is-the-use-of-python-dotenv (Python dotenv)
+10. https://rasyue.com/full-stack-react-with-python-flask/ (Flask)
+11. https://stackoverflow.com/questions/45186096/javascript-convert-array-of-arrays-into-array-of-objects-with-prefilled-values (Map Array to Objects)
