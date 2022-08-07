@@ -6,3 +6,33 @@
     height: 100vh;
     flex-direction: column;
 }
+
+.contact-list .contact-list-title {
+    font-size: 35px;
+    text-decoration: underline;
+}
+
+.MuiDataGrid-root.MuiDataGrid-root--densityStandard.css-r11z79-MuiDataGrid-root { /*Table Design*/
+    background: white;
+    padding: 0px 10px;
+    box-shadow: 3px 3px 1px grey;
+}
+
+.css-1jbbcbn-MuiDataGrid-columnHeaderTitle { /*Table Headers*/
+    font-weight: bold !important;
+    color: var(--primary);
+}
+
+.css-r11z79-MuiDataGrid-root .MuiDataGrid-iconSeparator { /*Table Headers' Separators*/
+    display: none;
+}
+
+.MuiDataGrid-cell--withRenderer.MuiDataGrid-cell.MuiDataGrid-cell--textLeft { /*Position of Action Buttons*/
+    padding-left: 36px;
+}
+
+.button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-colorInherit.MuiIconButton-sizeMedium.css-zylse7-MuiButtonBase-root-MuiIconButton-root,
+button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-colorInherit.MuiIconButton-sizeMedium.css-zylse7-MuiButtonBase-root-MuiIconButton-root {
+    color: var(--primary) !important;
+} /*Color for Table's Arrows*/
+

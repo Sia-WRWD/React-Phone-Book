@@ -1,6 +1,6 @@
 :root {
-  --slate: #8892b0;
-  --accent: #EB5D63;
+  --primary: #3f51b5;
+  --secondary: #FF886F;
 }
 
 .App {
@@ -23,14 +23,28 @@
   color: #fff;
 }
 
-
 /* Animations */
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  0% {
+    transform: rotate(0) scale(1) skew(1deg);
   }
-  to {
-    transform: rotate(360deg);
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
   }
 }
 
@@ -38,7 +52,7 @@
   from {
     transform: scale3d(1, 1, 1);
   }
-  30% {
+  50% {
     transform: scale3d(1.25, 0.75, 1);
   }
   40% {
@@ -48,10 +62,10 @@
     transform: scale3d(1.15, 0.85, 1);
   }
   65% {
-    transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
   }
   75% {
-    transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, 0.95, 1);
   }
   to {
     transform: scale3d(1, 1, 1);

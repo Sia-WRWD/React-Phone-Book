@@ -1,5 +1,5 @@
 //Libraries
-import React from "react";
+import React, {useEffect} from "react";
 import axios from "axios";
 
 import Backdrop from "@mui/material/Backdrop";
@@ -7,15 +7,13 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
-import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
-import { Snackbar } from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import PhoneIcon from '@mui/icons-material/Phone';
-import AddIcon from '@mui/icons-material/Add';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 //Other Assets
-import "./add_contact.css";
+import "./update_contact.css";
 
 const style = {
   position: "absolute",
@@ -29,18 +27,10 @@ const style = {
   p: 4,
 };
 
-export default function Add_contact() {
+export default function Update_contact({toUpdateID, handleUpdateSuccess, handleUpdateError, name, number}) {
   const [open, setOpen] = React.useState(false); //Modal State
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const [successVisible, setSuccessVisible] = React.useState(false); //Success Message
-  //const handleSuccessVisible = () => setSuccessVisible(true);
-  const handleSuccessInvisible = () => setSuccessVisible(false);
-
-  const [errorVisible, setErrorVisible] = React.useState(false); //Error Message
-  //const handleErrorVisible = () => setErrorVisible(true);
-  const handleErrorInvisible = () => setErrorVisible(false);
 
   const [contactName, setContactName] = React.useState(""); //Form Inputs State
   const [contactNumber, setContactNumber] = React.useState("");
@@ -48,6 +38,13 @@ export default function Add_contact() {
   const [numberErrorMsg, setNumberErrorMsg] = React.useState("");
   const [isNameError, setNameError] = React.useState(false);
   const [isNumberError, setNumberError] = React.useState(false);
+
+  const setInitialState = () => {
+    setContactName(name);
+    setContactNumber(number);
+  }
+
+  useEffect(setInitialState, [name, number]);
 
   const handleContactName = e => { //Contact Name Handler
     setContactName(e.target.value);
@@ -87,39 +84,39 @@ export default function Add_contact() {
   const handleSubmit = e => { //Log Form Values & Submit
     e.preventDefault();
 
-    var newContactData = new FormData();
+    var updatedContactdata = new FormData();
 
-    newContactData.append("name", contactName);
-    newContactData.append("number", contactNumber);
+    updatedContactdata.append("name", contactName);
+    updatedContactdata.append("number", contactNumber);
     
-    const addNewContact = async () => {
-      const resp = await axios.post("http://127.0.0.1:5000/AddContact", newContactData).catch((err) => console.log(err));
+    const updateContact = async () => {
+      const resp = await axios.put("http://127.0.0.1:5000/EditContact/" + toUpdateID, updatedContactdata).catch((err) => console.log(err));
       
       if (resp) {
-        setSuccessVisible(true);
+        handleUpdateSuccess(true);
         setOpen(false);
       } else {
-        setErrorVisible(true);
+        handleUpdateError(true);
         setOpen(false);
       }
     }
 
-    addNewContact();
+    updateContact();
 
     setContactName(''); //Reset Inputs' States
     setContactNumber('');
     setNumberError(false);
     setNameError(false);
     
-    setTimeout(() => window.location.reload(false), 3000);
+    setTimeout(() => window.location.reload(false), 2000);
   }
 
   return (
-    <div className="add-contact"> 
+    <div className="update-contact"> 
       <Button onClick={handleOpen} variant="outlined" className="btn-Add">
-        <AddIcon />
+        <ModeEditIcon />
       </Button> 
-      <Modal className="add-modal"
+      <Modal className="update-modal"
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
@@ -132,7 +129,7 @@ export default function Add_contact() {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <h1 className="modal-title">Add New Contacts</h1>
+            <h1 className="modal-title">Update Contacts</h1>
             <form onSubmit={handleSubmit}>
               <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                 <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
@@ -166,16 +163,6 @@ export default function Add_contact() {
           </Box>
         </Fade>
       </Modal>
-      <Snackbar open={successVisible}>
-        <Alert severity="success" onClose={handleSuccessInvisible}>
-          Successfully Added New Contact.
-        </Alert>
-      </Snackbar>
-      <Snackbar open={errorVisible}>
-        <Alert severity="error" onClose={handleErrorInvisible}>
-          Something Went Wrong, Please Try Again.
-        </Alert>
-      </Snackbar>
     </div>
   );
 }

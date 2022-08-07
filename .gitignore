@@ -25,3 +25,5 @@ yarn-error.log*
 # db
 /src/back-end/.env
 /src/back-end/venv
+src/back-end/db2.py
+src/back-end/models.py

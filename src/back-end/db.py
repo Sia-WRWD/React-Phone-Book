@@ -2,14 +2,13 @@ import os
 from dotenv import load_dotenv, find_dotenv
 
 from flask import Flask, jsonify, request
-from flask_restful import Resource, Api
 from json import *
-from flask_cors import CORS, cross_origin
+from flask_cors import cross_origin
 import pymysql as sql
 
 load_dotenv(find_dotenv()) #Find dotenv file
 
-sql_host = os.environ.get("host") + '' #Get DB credentials
+sql_host = os.environ.get("host") #Get DB credentials
 sql_port = os.environ.get("port")
 sql_user = os.environ.get("user")
 sql_password = os.environ.get("password")
@@ -36,10 +35,10 @@ def get_cursor(connection):
 
 app = Flask(__name__)
 
-@app.route('/') #Set Route for Reading
+@app.route('/', methods=["GET"]) #Set Route for Reading
 @cross_origin() #Allow access
 
-def hello_world():
+def fetchAllData():
     connection = connect_db()
     cur = connection.cursor()
     getAllContacts = "SELECT * FROM contacts"
@@ -49,7 +48,22 @@ def hello_world():
     jsonResp = jsonify(results)
     return jsonResp
 
+@app.route('/fetchSingleContact/<string:id>', methods=["GET"]) #Set Route for Reading
+@cross_origin() #Allow access
+
+def fetchSinglecontact(id):
+    connection = connect_db()
+    cur = connection.cursor()
+    getContact = "SELECT * FROM contacts WHERE contact_id = %s"
+    cur.execute(getContact, id)
+    
+    results = cur.fetchall()
+    jsonResp = jsonify(results)
+    return jsonResp
+
 @app.route('/AddContact', methods= ["POST"]) #Set Route for Insertion
+@cross_origin()
+
 def insert():
     if request.method == "POST":
         contact_name = request.form['name']
@@ -65,6 +79,7 @@ def insert():
         return "record inserted."
 
 @app.route('/DeleteContact/<string:id>', methods= ["DELETE"]) #Set Route for Deletion
+@cross_origin()
 def delete(id):
     if request.method == "DELETE":
         connection = connect_db()
@@ -77,6 +92,7 @@ def delete(id):
         return "record deleted."
 
 @app.route('/EditContact/<string:id>', methods= ["PUT"]) #Set Route for Update
+@cross_origin()
 def update(id):
     if request.method == "PUT":
         contact_name = request.form['name']

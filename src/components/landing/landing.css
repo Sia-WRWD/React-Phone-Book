@@ -1,4 +1,4 @@
-.App-logo {
+/* .App-logo { For Logo
   height: 40vh;
   border-radius: 50%;
   pointer-events: none;
@@ -8,42 +8,52 @@
   .App-logo {
     animation: App-logo-spin infinite 10s linear;
   }
-}
+} */
 
 .App-header {
-  background-color: black;
+  /* background-color: var(--primary); */
+  background-image: url("../../assets/background.png");
+  background-size: cover;                      
+  background-repeat: no-repeat;
+  background-position: center center;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-header h1 {
+.App-header .App-Title {
   margin: 0;
+  position: absolute;
+  top: 3%;
+  left: 5%;
+  text-align: left;
+  font-size: 40px;
 }
 
-.App-header h1 .blast {
+.App-header .App-Title .blast {
   display: inline-block;
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
-  background: linear-gradient(to right, var(--slate) 50%, var(--accent) 50%);
+  background: linear-gradient(to right, #fff 50%, var(--secondary) 50%);
   background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: 0.4s ease-out;
-  margin: 20px 0px;
+  margin: 0px 1px;
 }
 
-.App-header h1 .blast:hover {
+.App-header .App-Title .big {
+  font-size: 70px;
+  animation: App-logo-spin infinite 1s linear;
+}
+
+.App-header .App-Title .blast:hover {
   background-position: -100%;
   animation-name: rubberBand;
 }
 
-.App-header .action-btn {
+/* .App-header .action-btn { For Navigational Buttons
   background: transparent;
   border: 2px solid white;
   border-radius: 6px;
@@ -80,4 +90,4 @@
 .App-header .action-btn:active {
   opacity: 0.5;
   transform: translateY(-2px);
-}
+} */

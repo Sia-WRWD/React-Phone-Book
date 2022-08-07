@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //Components
-import Contact_List from "./components/contact_list/contact_list";
-import Add_Contact from "./components/add_contact/add_contact";
+import ContactList from "./components/contact_list/contact_list";
+import AddContact from "./components/add_contact/add_contact";
 import Landing from "./components/landing/landing";
 
 //Other Assets
@@ -20,9 +20,9 @@ class App extends Component {
             <Route
               exact
               path="/view-contact"
-              element={<Contact_List />}
+              element={<ContactList />}
             ></Route>
-            <Route exact path="/add-contact" element={<Add_Contact />}></Route>
+            <Route exact path="/add-contact" element={<AddContact />}></Route>
           </Routes>
         </Router>
         <footer className="App-footer">
